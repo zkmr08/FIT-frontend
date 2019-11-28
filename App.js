@@ -1,114 +1,68 @@
-/**
- * Sample React Native App
- * https://github.com/facebook/react-native
- *
- * @format
- * @flow
- */
-
-import React from 'react';
-import {
-  SafeAreaView,
-  StyleSheet,
-  ScrollView,
-  View,
-  Text,
-  StatusBar,
-} from 'react-native';
-
-import {
-  Header,
-  LearnMoreLinks,
-  Colors,
-  DebugInstructions,
-  ReloadInstructions,
-} from 'react-native/Libraries/NewAppScreen';
-
-const App: () => React$Node = () => {
-  return (
-    <>
-      <StatusBar barStyle="dark-content" />
-      <SafeAreaView>
-        <ScrollView
-          contentInsetAdjustmentBehavior="automatic"
-          style={styles.scrollView}>
-          <Header />
-          {global.HermesInternal == null ? null : (
-            <View style={styles.engine}>
-              <Text style={styles.footer}>Engine: Hermes</Text>
-            </View>
-          )}
-          <View style={styles.body}>
-            <View style={styles.sectionContainer}>
-              <Text style={styles.sectionTitle}>Step One</Text>
-              <Text style={styles.sectionDescription}>
-                Edit <Text style={styles.highlight}>App.js</Text> to change this
-                screen and then come back to see your edits.
-              </Text>
-            </View>
-            <View style={styles.sectionContainer}>
-              <Text style={styles.sectionTitle}>See Your Changes</Text>
-              <Text style={styles.sectionDescription}>
-                <ReloadInstructions />
-              </Text>
-            </View>
-            <View style={styles.sectionContainer}>
-              <Text style={styles.sectionTitle}>Debug</Text>
-              <Text style={styles.sectionDescription}>
-                <DebugInstructions />
-              </Text>
-            </View>
-            <View style={styles.sectionContainer}>
-              <Text style={styles.sectionTitle}>Learn More</Text>
-              <Text style={styles.sectionDescription}>
-                Read the docs to discover what to do next:
-              </Text>
-            </View>
-            <LearnMoreLinks />
-          </View>
-        </ScrollView>
-      </SafeAreaView>
-    </>
-  );
-};
-
+import React, { Component } from 'react';
+import { StyleSheet, Text, View } from 'react-native';
+export default class App extends Component<{}> {
+  render() {
+    return (
+      <View style={styles.container}>
+        <View style={styles.exampleContainer}>
+          <Example>
+            <CenteredText>A</CenteredText>
+          </Example>
+        </View>
+        <View style={styles.exampleContainer}>
+          <Example style={{ marginTop: 50 }}>
+            <CenteredText>B</CenteredText>
+          </Example>
+        </View>
+        <View style={styles.exampleContainer}>
+          <Example style={{ marginTop: 50, marginLeft: 10 }}>
+            <CenteredText>C</CenteredText>
+          </Example>
+        </View>
+        <View style={styles.exampleContainer}>
+          <Example style={{ marginLeft: -10, marginTop: -10 }}>
+            <CenteredText>D</CenteredText>
+          </Example>
+        </View>
+      </View>
+    );
+  }
+}
+const Example = (props) => (
+  <View style={[styles.example, props.style]}>
+    {props.children}
+  </View>
+);
+const CenteredText = (props) => (
+  <Text style={[styles.centeredText, props.style]}>
+    {props.children}
+  </Text>
+);
 const styles = StyleSheet.create({
-  scrollView: {
-    backgroundColor: Colors.lighter,
+  container: {
+    alignItems: 'center',
+    flex: 1,
+    flexDirection: 'row',
+    flexWrap: 'wrap',
+    justifyContent: 'center',
+    marginTop: 75
   },
-  engine: {
-    position: 'absolute',
-    right: 0,
+  exampleContainer: {
+    borderWidth: 1,
+    width: 120,
+    height: 120,
+    marginLeft: 20,
+    marginBottom: 20,
   },
-  body: {
-    backgroundColor: Colors.white,
+  example: {
+    width: 50,
+    height: 50,
+    backgroundColor: 'grey',
+    borderWidth: 1,
+    justifyContent: 'center'
   },
-  sectionContainer: {
-    marginTop: 32,
-    paddingHorizontal: 24,
-  },
-  sectionTitle: {
-    fontSize: 24,
-    fontWeight: '600',
-    color: Colors.black,
-  },
-  sectionDescription: {
-    marginTop: 8,
-    fontSize: 18,
-    fontWeight: '400',
-    color: Colors.dark,
-  },
-  highlight: {
-    fontWeight: '700',
-  },
-  footer: {
-    color: Colors.dark,
-    fontSize: 12,
-    fontWeight: '600',
-    padding: 4,
-    paddingRight: 12,
-    textAlign: 'right',
-  },
+  centeredText: {
+    textAlign: 'center',
+    margin: 10
+  }
 });
-
-export default App;
