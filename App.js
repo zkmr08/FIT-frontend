@@ -6,22 +6,22 @@ export default class App extends Component<{}> {
       <View style={styles.container}>
         <View style={styles.exampleContainer}>
           <Example>
-            <CenteredText>A</CenteredText>
+            <CenteredText>a</CenteredText>
           </Example>
         </View>
         <View style={styles.exampleContainer}>
           <Example style={{ marginTop: 50 }}>
-            <CenteredText>B</CenteredText>
+            <CenteredText>b</CenteredText>
           </Example>
         </View>
         <View style={styles.exampleContainer}>
           <Example style={{ marginTop: 50, marginLeft: 10 }}>
-            <CenteredText>C</CenteredText>
+            <CenteredText>c</CenteredText>
           </Example>
         </View>
         <View style={styles.exampleContainer}>
           <Example style={{ marginLeft: -10, marginTop: -10 }}>
-            <CenteredText>D</CenteredText>
+            <CenteredText>d</CenteredText>
           </Example>
         </View>
       </View>
