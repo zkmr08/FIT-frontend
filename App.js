@@ -4,20 +4,32 @@ export default class App extends Component<{}> {
   render() {
     return (
       <View style={styles.container}>
-        <TextContainer>
-          <LeftText>Text A</LeftText>
-        </TextContainer>
-        <TextContainer>
-          <LeftText style={{ lineHeight: 100 }}>
-            Text B
+        <LeftText style={{ fontStyle: 'italic' }}>
+          A) Italic
 </LeftText>
-        </TextContainer>
-        <TextContainer>
-          <LeftText>Text C</LeftText>
-        </TextContainer>
-        <TextContainer>
-          <LeftText>{Platform.OS}</LeftText>
-        </TextContainer>
+        <LeftText style={{ textDecorationLine: 'underline line-through' }}>
+          B) Underline and Line Through
+</LeftText>
+        <LeftText style={{
+          textDecorationLine: 'underline line-through',
+          textDecorationColor: 'red',
+          textDecorationStyle: 'dotted'
+        }}>
+          C) Underline and Line Through
+</LeftText>
+        <LeftText style={{
+          textShadowColor: 'red',
+          textShadowOffset: { width: -2, height: -2 },
+          textShadowRadius: 4
+        }}>
+          D) Text Shadow
+</LeftText>
+        <LeftText style={{ letterSpacing: 5 }}>
+          E) Letter Spacing
+</LeftText>
+        <LeftText style={{ textAlign: 'center', fontWeight: 'bold' }}>
+          {Platform.OS}
+        </LeftText>
       </View>
     );
   }
@@ -27,11 +39,6 @@ const LeftText = (props) => (
     {props.children}
   </Text>
 );
-const TextContainer = (props) => (
-  <View style={[styles.textContainer, props.style]}>
-    {props.children}
-  </View>
-);
 const styles = StyleSheet.create({
   container: {
     width: 300,
@@ -39,10 +46,8 @@ const styles = StyleSheet.create({
     margin: 40,
     marginTop: 100
   },
-  textContainer: {
-    borderWidth: 1
-  },
   leftText: {
-    fontSize: 20
+    fontSize: 20,
+    paddingBottom: 10
   }
 });
