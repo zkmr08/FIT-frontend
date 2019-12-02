@@ -1,68 +1,48 @@
 import React, { Component } from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import { Platform, StyleSheet, Text, View } from 'react-native';
 export default class App extends Component<{}> {
   render() {
     return (
       <View style={styles.container}>
-        <View style={styles.exampleContainer}>
-          <Example>
-            <CenteredText>a</CenteredText>
-          </Example>
-        </View>
-        <View style={styles.exampleContainer}>
-          <Example style={{ marginTop: 50 }}>
-            <CenteredText>b</CenteredText>
-          </Example>
-        </View>
-        <View style={styles.exampleContainer}>
-          <Example style={{ marginTop: 50, marginLeft: 10 }}>
-            <CenteredText>c</CenteredText>
-          </Example>
-        </View>
-        <View style={styles.exampleContainer}>
-          <Example style={{ marginLeft: -10, marginTop: -10 }}>
-            <CenteredText>d</CenteredText>
-          </Example>
-        </View>
+        <TextContainer>
+          <LeftText>Text A</LeftText>
+        </TextContainer>
+        <TextContainer>
+          <LeftText style={{ lineHeight: 100 }}>
+            Text B
+</LeftText>
+        </TextContainer>
+        <TextContainer>
+          <LeftText>Text C</LeftText>
+        </TextContainer>
+        <TextContainer>
+          <LeftText>{Platform.OS}</LeftText>
+        </TextContainer>
       </View>
     );
   }
 }
-const Example = (props) => (
-  <View style={[styles.example, props.style]}>
-    {props.children}
-  </View>
-);
-const CenteredText = (props) => (
-  <Text style={[styles.centeredText, props.style]}>
+const LeftText = (props) => (
+  <Text style={[styles.leftText, props.style]}>
     {props.children}
   </Text>
 );
+const TextContainer = (props) => (
+  <View style={[styles.textContainer, props.style]}>
+    {props.children}
+  </View>
+);
 const styles = StyleSheet.create({
   container: {
-    alignItems: 'center',
-    flex: 1,
-    flexDirection: 'row',
-    flexWrap: 'wrap',
-    justifyContent: 'center',
-    marginTop: 75
+    width: 300,
+    height: 300,
+    margin: 40,
+    marginTop: 100
   },
-  exampleContainer: {
-    borderWidth: 1,
-    width: 120,
-    height: 120,
-    marginLeft: 20,
-    marginBottom: 20,
+  textContainer: {
+    borderWidth: 1
   },
-  example: {
-    width: 50,
-    height: 50,
-    backgroundColor: 'grey',
-    borderWidth: 1,
-    justifyContent: 'center'
-  },
-  centeredText: {
-    textAlign: 'center',
-    margin: 10
+  leftText: {
+    fontSize: 20
   }
 });
